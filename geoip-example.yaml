@@ -1,0 +1,24 @@
+# The maximum number of CIDR entries per network group (int)
+maxgroupsize: 30000
+
+# The maximum number of network groups (int)
+maxgroups: 8
+
+# if defined, will be used as the prefix for the temporary tables (string)
+tempprefix: "geoip"
+
+# if not empty, will replace the `add $tempprefix` prefix entirely (string)
+# Note: if prefix is not empty, tempprefix will be ignored
+prefix: ""
+
+# list of country codes to block (array of string)
+ccs:
+
+# list of other URLs to retrieve (array of string)
+othersources:
+
+# list of other CIDR blocks to block (array of string)
+otherblocks:
+
+# list of CIDR blocks to explicitly whitelist (array of string)
+whitelist:
