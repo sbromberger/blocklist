@@ -21,7 +21,7 @@ in building or installing software on your target hardware.
 5. On the router, create firewall rules that block sources from these network groups
 6. Build on a system with Go installed for the edgerouter 4 architecture: `GOOS=linux GOARCH=mips go build`
 7. Edit the variables in geoip.sh to suit your setup (the defaults are sane but you might prefer different names)
-8. Copy `blocklist`, `geoip.yaml`, `testmulti.sh`, and `geoip.sh` to your router (recommended: place in `/config/geoip`)
+8. Copy `blocklist`, `geoip.yaml`, `testip.sh`, and `geoip.sh` to your router (recommended: place in `/config/geoip`)
 9. Test by running `geoip.sh` as root on the router
 10. Create a cronjob to run periodically (optional)
 
