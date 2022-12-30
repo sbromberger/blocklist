@@ -12,7 +12,7 @@ import (
 func main() {
 	var configFile string
 	if len(os.Args) < 2 {
-		configFile = "geoip.yaml"
+		configFile = "blocklist.yaml"
 	} else {
 		configFile = os.Args[1]
 	}
