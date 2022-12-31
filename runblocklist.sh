@@ -4,7 +4,7 @@ BLOCKLIST=BLOCKLIST.txt
 BLOCKLIST_PROG=./blocklist
 BLOCKTMPSET=tmpblocks
 # must be consistent with the yaml/blocklist
-NETSET=blocks
+NETSET=block
 IPSET=ipset
 $BLOCKLIST_PROG > $BLOCKLIST
 NGROUPS=$(tail -1 $BLOCKLIST | cut -d " " -f 2 | sed "s/$BLOCKTMPSET//")
