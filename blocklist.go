@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/netip"
+	"sort"
 	"strings"
 
 	"go4.org/netipx"
@@ -113,5 +114,9 @@ func (c *Config) getAllURLs() []netip.Prefix {
 	if err != nil {
 		return []netip.Prefix{}
 	}
-	return prefixes.Prefixes()
+	pref := prefixes.Prefixes()
+	sort.Slice(pref, func(i, j int) bool {
+		return pref[i].Bits() < pref[j].Bits()
+	})
+	return pref
 }
