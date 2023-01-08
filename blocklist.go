@@ -103,6 +103,12 @@ func (c *Config) getAllURLs() []netip.Prefix {
 		}
 	}
 
+	// make sure the channel is empty
+	for len(ch) > 0 {
+		cidr := <-ch
+		b.AddPrefix(cidr)
+	}
+
 	for _, cidr := range c.OtherBlocks {
 		b.AddPrefix(cidr)
 	}
