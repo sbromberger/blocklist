@@ -84,8 +84,6 @@ func (c *Config) getAllURLs() []netip.Prefix {
 	ch := make(chan netip.Prefix, 1_000)
 	remainingWorkers := len(allURLs)
 	doneWorkers := make(chan bool, remainingWorkers)
-	defer close(ch)
-	defer close(doneWorkers)
 	for _, url := range allURLs {
 		go func(url string) {
 			getAndClean(url, ch)
@@ -102,10 +100,11 @@ func (c *Config) getAllURLs() []netip.Prefix {
 			remainingWorkers--
 		}
 	}
+	close(doneWorkers)
+	close(ch)
 
 	// make sure the channel is empty
-	for len(ch) > 0 {
-		cidr := <-ch
+	for cidr := range ch {
 		b.AddPrefix(cidr)
 	}
 
